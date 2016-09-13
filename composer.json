@@ -1,0 +1,35 @@
+{
+    "name": "sofa/eloquent-sortable",
+    "description": "Sortable models for Laravel Eloquent ORM.",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/jarektkaczyk/eloquent-sortable/issues",
+        "source": "https://github.com/jarektkaczyk/eloquent-sortable"
+    },
+    "keywords": [
+        "laravel",
+        "eloquent",
+        "sortable"
+    ],
+    "authors": [
+        {
+            "name": "Jarek Tkaczyk",
+            "email": "jarek@softonsofa.com",
+            "homepage": "http://softonsofa.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/database": "~5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sofa\\Sortable\\": "src"
+        }
+    },
+    "minimum-stability": "stable",
+    "require-dev": {
+        "crysalead/kahlan": "^2.5"
+    }
+}
