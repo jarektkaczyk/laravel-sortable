@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofa\Sortable;
+namespace Sofa\LaravelSortable;
 
 trait Sortable
 {

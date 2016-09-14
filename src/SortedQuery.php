@@ -1,12 +1,12 @@
 <?php
 
-namespace Sofa\Sortable;
+namespace Sofa\LaravelSortable;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\ScopeInterface;
 
-class SortedQuery implements Scope
+class SortedQuery implements ScopeInterface
 {
     /**
      * By default Sortable results will be sorted ascending.
@@ -17,7 +17,7 @@ class SortedQuery implements Scope
      */
     public function apply(Builder $query, Model $model)
     {
-        $query->sorted();
+        $this->extend($query);
     }
 
     /**
@@ -34,12 +34,8 @@ class SortedQuery implements Scope
             return $query->orderBy($column, ($dir == 'desc') ? 'desc' : 'asc');
         });
 
-        $query->macro('unsorted', function ($query) {
-            return $query->withoutGlobalScope($this);
-        });
-
         $query->macro('reversed', function ($query) {
-            return $query->unsorted()->sorted('desc');
+            return $query->sorted('desc');
         });
 
         $query->macro('findAtPosition', function ($query, $position, $cols = ['*']) use ($column) {
@@ -50,5 +46,10 @@ class SortedQuery implements Scope
         $query->macro('atPosition', function ($query, $position) use ($column) {
             return $query->where($column, $position);
         });
+    }
+
+    public function remove(Builder $query, Model $model)
+    {
+        //
     }
 }

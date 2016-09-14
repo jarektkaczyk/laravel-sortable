@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofa\Sortable;
+namespace Sofa\LaravelSortable;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,7 +40,7 @@ class Sorter
         }
 
         $to = $model->sortablePosition();
-        $from = $model->getOriginal($model->sortableColumn());
+        $from = $model->getOriginal($model->sortableColumn()) ?: $model->count();
 
         return $to < $from
                 ? $this->movedUp($model, $to, $from)
