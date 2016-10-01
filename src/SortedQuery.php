@@ -17,7 +17,7 @@ class SortedQuery implements Scope
      */
     public function apply(Builder $query, Model $model)
     {
-        $query->sorted();
+        //
     }
 
     /**
